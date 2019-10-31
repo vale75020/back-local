@@ -6,7 +6,11 @@ const Joi = require('joi');
 var joiUserSchema = Joi.object({
   username: Joi.string().min(4).max(20).required(),
   password: Joi.string().min(4).max(30).required(),
-  admin: Joi.boolean()
+  admin: Joi.boolean(),
+  // access_token: [
+  //   Joi.string(),
+  //   Joi.number()
+  // ],
 });
 
 var mongooseUserSchema = new Mongoose.Schema(Joigoose.convert(joiUserSchema));
