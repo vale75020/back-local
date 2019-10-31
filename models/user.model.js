@@ -1,16 +1,17 @@
-
 const Mongoose = require('mongoose');
 const Joigoose = require('joigoose')(Mongoose);
+const Joi = require('joi');
+
 
 var joiUserSchema = Joi.object({
   username: Joi.string().min(4).max(20).required(),
   password: Joi.string().min(4).max(30).required(),
-  admin: Joi.boolean().required()
+  admin: Joi.boolean()
 });
 
-var mongooseUserSchema = new Mongoose.Schema(Joigoose.convert(joiUserSchema))
+var mongooseUserSchema = new Mongoose.Schema(Joigoose.convert(joiUserSchema));
 
-module.exports = User = Mongoose.model("users", mongooseUserSchema)
+module.exports = User = Mongoose.model('users', mongooseUserSchema);
 
 // const mongoose = require("mongoose");
 // const { Schema } = mongoose;
